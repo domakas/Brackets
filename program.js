@@ -13,7 +13,6 @@ const balancedBrackets = (text) => {
         stack[stack.length - 1] !==
           openingBrackets[closingBrackets.indexOf(char)])
     ) {
-      console.log(false);
       return false;
     } else if (closingBrackets.includes(char)) {
       stack.pop();
