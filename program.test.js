@@ -1,5 +1,44 @@
-const sum = require("./sum");
+const balancedBrackets = require("./program");
 
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
+test("All () brackets opened and closed", () => {
+  expect(balancedBrackets("((()))")).toBe(true);
+});
+test("All [] brackets opened and closed", () => {
+  expect(balancedBrackets("[[[]]]")).toBe(true);
+});
+test("All {} brackets opened and closed", () => {
+  expect(balancedBrackets("{{{}}}")).toBe(true);
+});
+test("All ([]) brackets opened and closed", () => {
+  expect(balancedBrackets("([()])")).toBe(true);
+});
+test("All ({}) brackets opened and closed", () => {
+  expect(balancedBrackets("({()})")).toBe(true);
+});
+test("All [{}] brackets opened and closed", () => {
+  expect(balancedBrackets("[{[]}]")).toBe(true);
+});
+test("All ([{}]) brackets opened and closed", () => {
+  expect(balancedBrackets("([{}])")).toBe(true);
+});
+test("One () not closed", () => {
+  expect(balancedBrackets("((())")).toBe(false);
+});
+test("One () not opened", () => {
+  expect(balancedBrackets("(()))")).toBe(false);
+});
+test("One [] not closed", () => {
+  expect(balancedBrackets("[[[]]")).toBe(false);
+});
+test("One [] not opened", () => {
+  expect(balancedBrackets("[[]]]")).toBe(false);
+});
+test("One {} not closed", () => {
+  expect(balancedBrackets("{{{}}")).toBe(false);
+});
+test("One {} not opened", () => {
+  expect(balancedBrackets("{{}}}")).toBe(false);
+});
+test("Bracket missmatch", () => {
+  expect(balancedBrackets("([{})]")).toBe(false);
 });
